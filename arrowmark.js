@@ -11,6 +11,8 @@
 //   options.arrowWidth : Width of the head of the arrow
 //   options.arrowLength : Length of the head of the arrow
 //   options.clipMargin : Margin from the elements
+//   options.clipMarginStart : Margin from the start element (pointing from)
+//   options.clipMarginEnd : Margin from the end element (pointing to)
 //   options.zIndex : z-index
 //   options.monitor : If true, the Arrowmark chaces after connected elements
 
@@ -36,6 +38,8 @@
             fillColor: "#000000",
             lineWidth: 0,
             clipMargin: 4,
+			clipMarginStart: null,
+			clipMarginEnd: null,
             barWidth: 3,
             arrowWidth: 12,
             arrowLength: 16,
@@ -64,8 +68,8 @@
                     }
                 }
 
-                var position = f.getPosition($element, options.clipMargin);
-                var targetPosition = f.getPosition($target, options.clipMargin);
+                var position = f.getPosition($element, options.clipMarginStart || options.clipMargin);
+                var targetPosition = f.getPosition($target, options.clipMarginEnd || options.clipMargin);
                 if(options.clip){
                      f.clip(position, targetPosition);
                      f.clip(targetPosition, position);
