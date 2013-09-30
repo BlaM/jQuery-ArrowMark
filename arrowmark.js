@@ -129,6 +129,19 @@
         });
     };
 
+    // Create arrowMarka by <a href="#?">. Link to objects with id="?" (that currently need <a> around them).
+    $.fn.arrowMarkByLinkToID = function(options){
+        var f = $.fn.arrowMark;
+        return this.each(function(){
+            var targetname = $(this).attr("href");
+            if(targetname){
+                targetname = targetname.substr(1);
+                $(this).parent().arrowMark($("#" + targetname).parent(), options);
+            }
+        });
+    };
+
+
     // Get arrowMark Canvas that the Element owns.
     $.fn.getArrowMark = function($targetObj){
         var f = $.fn.arrowMark;
